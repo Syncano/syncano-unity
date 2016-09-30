@@ -1,4 +1,4 @@
-# Syncano Unity Library [Beta]
+# Syncano Unity Library
 
 ## Overview
 ---
@@ -20,7 +20,7 @@ In case you need help working with the library - email us at [libraries@syncano.
 Happy coding!
 
 ## Multiplatform support
-Syncano Unity Library supports all platforms available in Unity. Note some platforms for instance `WebGL` may require to add an external `link.xml` file available here[](), otherwise you may encounter build errors.
+Syncano Unity Library supports all platforms available in Unity. Note some platforms for instance `WebGL` may require to add an external `link.xml` file available [here](https://github.com/Syncano/syncano-unity/blob/master/link.xml), otherwise you may encounter build errors.
 
 ## Documentation
 
