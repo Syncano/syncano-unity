@@ -10,8 +10,7 @@ The full source code can be found on [Github](https://github.com/Syncano/syncano
 ---
 To install Syncano Unity Library visit [Release](https://github.com/Syncano/syncano-unity/releases/) page, download latest package and import it from Unity.
 
-Alternative method requires downloading both Syncano.Unity.dll and Newtonsoft.Json.dll files and placing them anywhere under /Assets/ folder. The library uses Newtonsoft.Json.dll to process JSON files.
-Dynamic-Link Library is available on [Release](https://github.com/Syncano/syncano-unity/releases/) page. The latest version of Newtonsoft Json library can be downloaded from [here](https://github.com/SaladLab/Json.Net.Unity3D/releases).
+Alternative method requires downloading both Syncano.Unity.dll and Newtonsoft.Json.dll files and placing them anywhere under /Assets/ folder. Unity Library dll is available on [Release](https://github.com/Syncano/syncano-unity/releases/) page. The library uses Newtonsoft.Json.dll to process JSON files. The latest version of Newtonsoft Json library can be downloaded from [here](https://github.com/SaladLab/Json.Net.Unity3D/releases).
 
 
 For more detailed information on how to use Syncano and its features - our [Developer Manual](http://docs.syncano.com/docs/getting-started-with-syncano/?utm_source=github&utm_medium=readme) should be very helpful.
