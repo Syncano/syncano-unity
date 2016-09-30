@@ -29,5 +29,6 @@ You can find more on using Syncano in our [documentation](http://docs.syncano.io
 We love contributions! Those who want to help us improve our Syncano library -- contribute to code, documentation, adding tests or making any other improvements -- please [create a Pull Request](https://github.com/Syncano/syncano-unity/pulls) with proposed changes.
 
 ## License
+---
 Syncano's Android library is available under the MIT license. 
 See the [LICENSE](https://github.com/Syncano/syncano-unity/blob/master/LICENSE) file for more info.
