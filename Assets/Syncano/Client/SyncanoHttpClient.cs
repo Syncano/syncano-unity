@@ -164,7 +164,7 @@ namespace Syncano.Client {
 			return StartCoroutine(SendRequest(new Response<T>(), url, string.Empty, onSuccess, onFailure, UnityWebRequest.kHttpVerbGET));
 		}
 
-	 	public Coroutine PostAsync<T>(Action<ResponseGetList<T>> onSuccess, Action<ResponseGetList<T>> onFailure = null, string httpMethodOverride = null) where T : SyncanoObject, new() {
+		public Coroutine PostAsync<T>(Action<ResponseGetList<T>> onSuccess, Action<ResponseGetList<T>> onFailure = null, string httpMethodOverride = null) where T : SyncanoObject, new() {
 			string url = UrlBuilder(null, typeof(T));
 			return StartCoroutine(SendRequest<T>(new ResponseGetList<T>(), url, string.Empty, onSuccess, onFailure, httpMethodOverride));
 		}
@@ -181,7 +181,7 @@ namespace Syncano.Client {
 		/// <param name="httpMethodOverride">Http method override.</param>
 		/// <typeparam name="T">The 1st type parameter.</typeparam>
 		private IEnumerator SendRequest<T>(Response<T> response, string url, string serializedObject, Delegate onSuccess, Delegate onFailure, string httpMethodOverride = null)  where T : SyncanoObject, new() {
-			
+
 			UnityWebRequest www = PrepareWebRequest(url, serializedObject, httpMethodOverride);
 
 			yield return www.Send();
@@ -264,18 +264,23 @@ namespace Syncano.Client {
 			}
 
 			WWWForm postData = null;
+			UnityWebRequest www = null;
 
 			if(payload != null && payload.Count > 0)
 			{
 				postData = new WWWForm();
-		
+
 				foreach(KeyValuePair<string, string> pair in payload)
 				{
 					postData.AddField(pair.Key, pair.Value);
 				}
+				www = UnityWebRequest.Post(url, postData);
 			}
 
-			UnityWebRequest www = UnityWebRequest.Post(url, postData);
+			else
+			{
+				www = UnityWebRequest.Get(url);
+			}
 
 			yield return www.Send();
 
@@ -332,7 +337,7 @@ namespace Syncano.Client {
 			bool isSyncanoError = CheckIfResponseIfSuccessForMethod(www.method, www.responseCode) != true;
 			webRequest.IsSyncanoError = isSyncanoError;
 			webRequest.IsSuccess = !www.isError && isSyncanoError == false;
-			 
+
 			if(isSyncanoError) {
 				webRequest.syncanoError = www.downloadHandler.text;
 			}
