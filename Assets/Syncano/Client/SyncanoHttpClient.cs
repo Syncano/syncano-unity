@@ -128,7 +128,7 @@ namespace Syncano.Client {
 		public Coroutine PostAsync<T>(T obj, Action<Response<T>> onSuccess, Action<Response<T>> onFailure, string httpMethodOverride = null) where T :SyncanoObject , new() {
 
 			string serializedObject = obj != null ? JsonConvert.SerializeObject(obj) : string.Empty;
-			string id =  (obj != null && obj.id != 0) ? obj.id.ToString() : string.Empty;
+			string id =  (obj != null && obj.Id != 0) ? obj.Id.ToString() : string.Empty;
 			string url = UrlBuilder(id.ToString(), typeof(T));
 
 			return StartCoroutine(SendRequest(new Response<T>(), url, serializedObject, onSuccess, onFailure, httpMethodOverride));
@@ -292,6 +292,13 @@ namespace Syncano.Client {
 				if(string.IsNullOrEmpty(response.stderr) == false)
 				{
 					response.IsSuccess = false;
+				}
+
+				if(string.IsNullOrEmpty(response.stdout) == false && response.stdout.StartsWith("error { Error"))
+				{
+					response.IsSuccess = false;
+					response.IsSyncanoError = true;
+					response.syncanoError = response.stdout;
 				}
 			}	
 

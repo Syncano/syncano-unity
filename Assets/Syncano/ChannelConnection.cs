@@ -134,7 +134,7 @@ public class ChannelConnection {
 	{
 		if(response.Data != null)
 		{
-			lastId = response.Data.id;
+			lastId = response.Data.Id;
 		}
 
 		if (onNotification != null)
