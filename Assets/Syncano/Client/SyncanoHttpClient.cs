@@ -127,7 +127,7 @@ namespace Syncano.Client {
 		/// <typeparam name="T">The 1st type parameter.</typeparam>
 		public Coroutine PostAsync<T>(T obj, Action<Response<T>> onSuccess, Action<Response<T>> onFailure, string httpMethodOverride = null) where T :SyncanoObject , new() {
 
-			string serializedObject = obj != null ? JsonUtility.ToJson(obj) : string.Empty;
+			string serializedObject = obj != null ? JsonConvert.SerializeObject(obj) : string.Empty;
 			string id =  (obj != null && obj.id != 0) ? obj.id.ToString() : string.Empty;
 			string url = UrlBuilder(id.ToString(), typeof(T));
 

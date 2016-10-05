@@ -23,6 +23,8 @@ public class ScriptEndpoint : SyncanoWebRequest {
 	/// </summary>
 	public string stdout { get { return result.stdout; } }
 
+	public ScriptEndpoint () { }
+
 	[System.Serializable]
 	public class Result
 	{
