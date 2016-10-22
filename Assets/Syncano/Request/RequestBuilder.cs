@@ -59,7 +59,7 @@ namespace Syncano.Request {
 		public Coroutine Get<T>(string channelName, Dictionary<string, string> getData, Action<Response<T>> onResponseReturned) where T : SyncanoObject, new() {
 			return SyncanoHttpClient.Instance.GetAsync<T>(channelName, getData, onResponseReturned, null);
 		}
-
+		/*
 		/// <summary>
 		/// Sends a POST request to Syncano with parameters.
 		/// </summary>
@@ -75,7 +75,7 @@ namespace Syncano.Request {
 		public Coroutine POST<T>(Dictionary<string, string> postData, Action<Response<T>> onResponseReturned) where T : SyncanoObject, new() {
 			return SyncanoHttpClient.Instance.PostAsync<T>(postData, onResponseReturned, null, UnityEngine.Networking.UnityWebRequest.kHttpVerbPOST);
 		}
-
+		*/
 		/// <summary>
 		/// Creates the channel.
 		/// </summary>
@@ -99,13 +99,17 @@ namespace Syncano.Request {
 		/// <param name="onSuccess">On success.</param>
 		/// <param name="onFailure">On failure.</param>
 		/// <typeparam name="T">The 1st type parameter.</typeparam>
-		public Coroutine Save<T>(T obj, Action<Response<T>> onSuccess, Action<Response<T>> onFailure) where T : SyncanoObject, new()  {
+		public Coroutine Save<T>(T obj, Action<Response<T>> onSuccess, Action<Response<T>> onFailure) where T : SyncanoObject, new() {
 			CheckCallbacks<T>(onSuccess, onFailure);
 			return SyncanoHttpClient.Instance.PostAsync<T>(obj, onSuccess, onFailure);
 		}
 
-		public Coroutine Save<T>(T obj,  Action<Response<T>> onResponseReturned) where T : SyncanoObject, new()  {
+		public Coroutine Save<T>(T obj,  Action<Response<T>> onResponseReturned) where T : SyncanoObject, new() {
 			return SyncanoHttpClient.Instance.PostAsync<T>(obj, onResponseReturned, null);
+		}
+
+		public Coroutine Register<T>(string url, User<T> obj, Action<Response<User<T>>> onSuccess, Action<Response<User<T>>> onFailure, string httpMethodOverride) where T : Profile, new() {
+			return SyncanoHttpClient.Instance.CreateOrUpdateUser<T>(url, obj, onSuccess, onFailure, httpMethodOverride);
 		}
 
 		/// <summary>

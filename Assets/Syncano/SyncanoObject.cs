@@ -20,42 +20,42 @@ public class SyncanoObject {
 	/// <summary>
 	/// The channel.
 	/// </summary>
-	[JsonProperty("channel")]
+	[JsonProperty("channel", NullValueHandling = NullValueHandling.Ignore)]
 	public string Channel;
 
 	/// <summary>
 	/// Channel room.
 	/// </summary>
-	[JsonProperty("channelroom")]
+	[JsonProperty("channelroom", NullValueHandling = NullValueHandling.Ignore)]
 	public string ChannelRoom { get; set; }
 
 	/// <summary>
 	/// Gets or sets the owner permissions.
 	/// </summary>
 	/// <value>The owner permissions.</value>
-	[JsonProperty("ownerPermissions")]
-	public DataObjectPermissions OwnerPermissions { get; set; }
+	[JsonProperty("ownerPermissions", NullValueHandling = NullValueHandling.Ignore)]
+	public DataObjectPermissions? OwnerPermissions { get; set; }
 
 	/// <summary>
 	/// Gets or sets the group permissions.
 	/// </summary>
 	/// <value>The group permissions.</value>
-	[JsonProperty("groupPermissions")]
-	public DataObjectPermissions GroupPermissions { get; set; }
+	[JsonProperty("groupPermissions", NullValueHandling = NullValueHandling.Ignore)]
+	public DataObjectPermissions? GroupPermissions { get; set; }
 
 	/// <summary>
 	/// Gets or sets the other permissions.
 	/// </summary>
 	/// <value>The other permissions.</value>
-	[JsonProperty("otherPermissions")]
-	public DataObjectPermissions OtherPermissions { get; set; }
+	[JsonProperty("otherPermissions", NullValueHandling = NullValueHandling.Ignore)]
+	public DataObjectPermissions? OtherPermissions { get; set; }
 
 	/// <summary>
 	/// Gets or sets the group.
 	/// </summary>
 	/// <value>The group.</value>
-	[JsonProperty("group")]
-	public int Group { get; set; }
+	[JsonProperty("group", NullValueHandling = NullValueHandling.Ignore)]
+	public int? Group { get; set; }
 
 	/// <summary>
 	/// Empty constructor is required when deserializing Syncano objects.

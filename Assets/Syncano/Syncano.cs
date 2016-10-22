@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine.Networking;
 using Syncano.Request;
 using Syncano.Data;
+using System;
 
 namespace Syncano {
 	/// <summary>
@@ -20,6 +21,12 @@ namespace Syncano {
 	/// The API key.
 	/// </summary>
 	public string ApiKey { get; private set; }
+
+	/// <summary>
+	/// Gets or sets the user key.
+	/// </summary>
+	/// <value>The user key.</value>
+	public string UserKey { get; set; }
 
 	/// <summary>
 	/// This flag checks if Syncano client was initialized.
@@ -51,6 +58,30 @@ namespace Syncano {
 			return null;
 		}
 		return new RequestBuilder();
+	}
+	
+	/// <summary>
+	/// Registers the user.
+	/// </summary>
+	/// <returns>The user.</returns>
+	/// <param name="user">User.</param>
+	/// <param name="onSuccess">On success.</param>
+	/// <param name="onFailure">On failure.</param>
+	public Coroutine RegisterUser<T>(string url, User<T> user, Action<Response<User<T>>> onSuccess, Action<Response<User<T>>> onFailure, string httpMethodOverride)  where T : Profile, new()
+	{
+			return Please().Register(url, user, onSuccess, onFailure, httpMethodOverride);
+	}
+	
+	/// <summary>
+	/// Registers the user.
+	/// </summary>
+	/// <returns>The user.</returns>
+	/// <param name="user">User.</param>
+	/// <param name="callback">Callback.</param>
+	/// <typeparam name="T">The 1st type parameter.</typeparam>
+	public Coroutine RegisterUser<T>(string url, User<T> user, Action<Response<User<T>>> callback, string httpMethodOverride) where T : Profile, new()
+	{
+		return Please().Register(url, user, callback, null, httpMethodOverride);
 	}
 }
 }
