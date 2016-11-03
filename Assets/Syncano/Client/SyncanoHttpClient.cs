@@ -200,11 +200,6 @@ namespace Syncano.Client {
 								{
 									wwwForm.AddBinaryData("profile." + propertyName, syncanoFile.Data);	
 								}
-
-								else if(syncanoFile.File != null)
-								{
-									//wwwForm.AddBinaryData("profile." + propertyName, syncanoFile.File.text);
-								}
 							}
 
 							else
@@ -495,9 +490,18 @@ namespace Syncano.Client {
 
 				else
 				{
-					if(classType.GetGenericTypeDefinition() == typeof(User<>))
+					if(classType.IsGenericTypeDefinition)
 					{
-						sb.Append(string.Format("/v1.1/instances/{0}/users/", SyncanoClient.Instance.InstanceName));
+						Type t = classType.GetGenericTypeDefinition();
+						if(t == typeof(User<>))
+						{
+							sb.Append(string.Format("/v1.1/instances/{0}/users/", SyncanoClient.Instance.InstanceName));
+						}
+
+						else
+						{
+							sb.Append(string.Format(Constants.OBJECTS_DETAIL_URL, SyncanoClient.Instance.InstanceName, classType.ToString(), ID));
+						}
 					}
 
 					else

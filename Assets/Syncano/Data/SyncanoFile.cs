@@ -13,18 +13,10 @@ public class SyncanoFile {
 	[JsonProperty("type")]
 	public string Type { get; set; }
 
-	[JsonProperty("file")]
-	public TextAsset File { get; set; }
-
 	public SyncanoFile() { }
 
 	public SyncanoFile(byte[] data) 
 	{
 		Data = data;
-	}
-
-	public SyncanoFile(TextAsset textAsset) 
-	{
-		File = textAsset;
 	}
 }
