@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Syncano;
 using System.Xml;
 using Newtonsoft.Json;
@@ -16,7 +17,7 @@ namespace Syncano.Data {
 		/// <summary>
 		/// The admin.
 		/// </summary>
-		[JsonProperty("admin")]
+		[JsonProperty("author")]
 		public Author Admin;
 
 		/// <summary>
@@ -27,8 +28,13 @@ namespace Syncano.Data {
 
 		public Notification() { }
 
+		public Notification(string json) 
+		{
+			Result = new Payload();
+			Result.Content = json;
+		}
 
-		public struct Payload
+		public class Payload
 		{
 			[JsonProperty("content")]
 			public string Content;

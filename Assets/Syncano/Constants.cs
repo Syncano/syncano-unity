@@ -25,6 +25,7 @@ public class Constants {
 	#region channel 
 	public const string CHANNELS_LIST_URL = "/v1.1/instances/{0}/channels/";
 	public const string CHANNELS_POLL_URL = "/v1.1/instances/{0}/channels/{1}/poll/";
+	public const string CHANNELS_PUBLISH_URL = "/v1.1/instances/{0}/channels/{1}/publish/";
 	#endregion channel
 
 }

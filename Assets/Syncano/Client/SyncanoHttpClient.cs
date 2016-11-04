@@ -260,11 +260,11 @@ namespace Syncano.Client {
 			return StartCoroutine(SendRequest(new Response<T>(), url, string.Empty, onSuccess, onFailure, httpMethodOverride, payload));
 		}
 
-		public Coroutine GetAsync<T>(string channelName, Dictionary<string, string> getData, Action<Response<T>> onSuccess, Action<Response<T>> onFailure, string url = null) where T : SyncanoObject, new() {
+		public Coroutine GetAsync<T>(string channelUrl, Dictionary<string, string> getData, Action<Response<T>> onSuccess, Action<Response<T>> onFailure) where T : SyncanoObject, new() {
 
-			url = UrlBuilder(channelName, typeof(T), getData, url: url);
+			channelUrl = UrlBuilder(channelUrl, typeof(T), getData, url: channelUrl);
 
-			return StartCoroutine(SendRequest(new Response<T>(), url, string.Empty, onSuccess, onFailure, UnityWebRequest.kHttpVerbGET));
+			return StartCoroutine(SendRequest(new Response<T>(), channelUrl, string.Empty, onSuccess, onFailure, UnityWebRequest.kHttpVerbGET));
 		}
 
 		public Coroutine PostAsync<T>(Action<ResponseGetList<T>> onSuccess, Action<ResponseGetList<T>> onFailure = null, string httpMethodOverride = null, string url = null) where T : SyncanoObject, new() {
@@ -481,11 +481,6 @@ namespace Syncano.Client {
 				if(classType.ToString().ToLower().Equals("channel"))
 				{
 					sb.Append(string.Format(Constants.CHANNELS_LIST_URL, SyncanoClient.Instance.InstanceName));
-				}
-
-				else if(classType.ToString().ToLower().Equals("notification"))
-				{
-					sb.Append(string.Format(Constants.CHANNELS_POLL_URL, SyncanoClient.Instance.InstanceName, id));
 				}
 
 				else

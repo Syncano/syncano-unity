@@ -175,6 +175,8 @@ public class ChannelConnection {
 	/// <param name="context">Context.</param>
 	private IEnumerator PollRequestLoop(string channelName, MonoBehaviour context)
 	{
+		string channelUrl = string.Format(Constants.PRODUCTION_SERVER_URL + Constants.CHANNELS_POLL_URL, SyncanoClient.Instance.InstanceName, channelName);
+
 		while(isRunning)
 		{
 			if(!isRunning)
@@ -182,7 +184,7 @@ public class ChannelConnection {
 				break;
 			}
 
-			yield return SyncanoClient.Instance.Please().Get<Notification>(channelName, null, HandleSuccess, HandleError);
+			yield return SyncanoClient.Instance.Please().Get<Notification>(channelUrl, null, HandleSuccess, HandleError);
 
 			if(receivedError)
 			{

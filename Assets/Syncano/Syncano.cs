@@ -83,5 +83,11 @@ namespace Syncano {
 	{
 		return Please().Register(url, user, callback, null, httpMethodOverride);
 	}
+
+	public Coroutine PublishOnChannel(string channelName, Notification notification) 
+	{
+		string url = string.Format(Constants.PRODUCTION_SERVER_URL + Constants.CHANNELS_PUBLISH_URL, SyncanoClient.Instance.InstanceName, channelName);
+		return Please().Post(url, notification, null, null);
+	}
 }
 }

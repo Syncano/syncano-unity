@@ -51,31 +51,27 @@ namespace Syncano.Request {
 		/// <param name="onSuccess">On success.</param>
 		/// <param name="onFailure">On failure.</param>
 		/// <typeparam name="T">The 1st type parameter.</typeparam>
-		public Coroutine Get<T>(string channelName, Dictionary<string, string> getData, Action<Response<T>> onSuccess, Action<Response<T>> onFailure) where T : SyncanoObject, new() {
+		public Coroutine Get<T>(string channelUrl, Dictionary<string, string> getData, Action<Response<T>> onSuccess, Action<Response<T>> onFailure) where T : SyncanoObject, new() {
 			CheckCallbacks<T>(onSuccess, onFailure);
-			return SyncanoHttpClient.Instance.GetAsync<T>(channelName, getData, onSuccess, onFailure);
+			return SyncanoHttpClient.Instance.GetAsync<T>(channelUrl, getData, onSuccess, onFailure);
 		}
 
-		public Coroutine Get<T>(string channelName, Dictionary<string, string> getData, Action<Response<T>> onResponseReturned) where T : SyncanoObject, new() {
-			return SyncanoHttpClient.Instance.GetAsync<T>(channelName, getData, onResponseReturned, null);
+		public Coroutine Get<T>(string channelUrl, Dictionary<string, string> getData, Action<Response<T>> onResponseReturned) where T : SyncanoObject, new() {
+			return SyncanoHttpClient.Instance.GetAsync<T>(channelUrl, getData, onResponseReturned, null);
 		}
-		/*
+
 		/// <summary>
-		/// Sends a POST request to Syncano with parameters.
+		/// Post the specified url, obj, onSuccess and onFailure.
 		/// </summary>
-		/// <param name="id">Identifier.</param>
+		/// <param name="url">URL.</param>
+		/// <param name="obj">Object.</param>
 		/// <param name="onSuccess">On success.</param>
 		/// <param name="onFailure">On failure.</param>
 		/// <typeparam name="T">The 1st type parameter.</typeparam>
-		public Coroutine POST<T>(Dictionary<string, string> postData, Action<Response<T>> onSuccess, Action<Response<T>> onFailure) where T : SyncanoObject, new() {
-			CheckCallbacks<T>(onSuccess, onFailure);
-			return SyncanoHttpClient.Instance.PostAsync<T>(postData, onSuccess, onFailure, UnityEngine.Networking.UnityWebRequest.kHttpVerbPOST);
+		public Coroutine Post<T>(string url, T obj, Action<Response<T>> onSuccess, Action<Response<T>> onFailure)  where T : SyncanoObject, new() {
+			return SyncanoHttpClient.Instance.PostAsync(obj, onSuccess, onFailure, url:url);
 		}
 
-		public Coroutine POST<T>(Dictionary<string, string> postData, Action<Response<T>> onResponseReturned) where T : SyncanoObject, new() {
-			return SyncanoHttpClient.Instance.PostAsync<T>(postData, onResponseReturned, null, UnityEngine.Networking.UnityWebRequest.kHttpVerbPOST);
-		}
-		*/
 		/// <summary>
 		/// Creates the channel.
 		/// </summary>
