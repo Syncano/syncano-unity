@@ -5,23 +5,24 @@ using Syncano;
 using Syncano.Data;
 using Newtonsoft.Json;
 
-[System.Serializable]
-public class ResponseGetList<T> : Response<T>  where T : SyncanoObject, new() {
+namespace Syncano.Data {
+	public class ResponseGetList<T> : Response<T>  where T : SyncanoObject, new() {
 
-	[JsonProperty("prev")]
-	public string Prev { get; set; }
+		[JsonProperty("prev")]
+		public string Prev { get; set; }
 
-	[JsonProperty("next")]
-	public string Next { get; set; }
+		[JsonProperty("next")]
+		public string Next { get; set; }
 
-	[JsonProperty("objects")]
-	public List<T> Objects { get; set; }
+		[JsonProperty("objects")]
+		public List<T> Objects { get; set; }
 
-	public ResponseGetList() { }
+		public ResponseGetList() { }
 
-	public override void SetData (string json)
-	{
-		JsonSerializerSettings settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
-		Newtonsoft.Json.JsonConvert.PopulateObject(json, this, settings);
+		public override void SetData (string json)
+		{
+			JsonSerializerSettings settings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+			Newtonsoft.Json.JsonConvert.PopulateObject(json, this, settings);
+		}
 	}
 }

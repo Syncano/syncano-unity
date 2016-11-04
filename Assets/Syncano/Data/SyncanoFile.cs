@@ -3,20 +3,22 @@ using System.Collections;
 using System.IO;
 using Newtonsoft.Json;
 
-public class SyncanoFile {
+namespace Syncano.Data {
+	public class SyncanoFile {	
 
-	public byte[] Data { get; set; }
+		public byte[] Data { get; set; }
 
-	[JsonProperty("value")]
-	public string Value { get; set; }
+		[JsonProperty("value")]
+		public string Value { get; set; }
 
-	[JsonProperty("type")]
-	public string Type { get; set; }
+		[JsonProperty("type")]
+		public string Type { get; set; }
 
-	public SyncanoFile() { }
+		public SyncanoFile() { }
 
-	public SyncanoFile(byte[] data) 
-	{
-		Data = data;
+		public SyncanoFile(byte[] data) 
+		{
+			Data = data;
+		}
 	}
 }

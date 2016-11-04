@@ -2,8 +2,10 @@
 using System.Collections;
 using Syncano;
 
-public class Profile : SyncanoObject {
+namespace Syncano.Data {
+	public class Profile : SyncanoObject {
 
-	public Profile () { }
+		public Profile () { }
 
+	}
 }

@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 using System;
 using Syncano.Data;
 using Newtonsoft.Json;
+using Syncano.Enum;
 
 namespace Syncano {
 /// <summary>
