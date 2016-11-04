@@ -59,16 +59,6 @@ public class ChannelConnection {
 	private bool receivedError;
 
 	/// <summary>
-	/// The last identifier returned from channel.
-	/// </summary>
-	private long lastId;
-
-	/// <summary>
-	/// The channel name.
-	/// </summary>
-	private string channel;
-
-	/// <summary>
 	/// The opened channel by this object.
 	/// </summary>
 	private IEnumerator pollRequestLoop;
@@ -97,11 +87,9 @@ public class ChannelConnection {
 	/// </summary>
 	/// <param name="context">Context.</param>
 	/// <param name="channel">Channel.</param>
-	public Coroutine Start(string channel, int lastId = 0) 
+	public Coroutine Start(string channel) 
 	{
 		isRunning = true;
-		this.channel = channel;
-		this.lastId = lastId;
 
 		if(pollRequestLoop != null)
 		{
@@ -134,7 +122,7 @@ public class ChannelConnection {
 	{
 		if(response.Data != null)
 		{
-			lastId = response.Data.Id;
+			//TODO
 		}
 
 		if (onNotification != null)

@@ -83,7 +83,13 @@ namespace Syncano {
 	{
 		return Please().Register(url, user, callback, null, httpMethodOverride);
 	}
-
+	
+	/// <summary>
+	/// Publish message on the channel.
+	/// </summary>
+	/// <returns>The on channel.</returns>
+	/// <param name="channelName">Channel name.</param>
+	/// <param name="notification">Notification.</param>
 	public Coroutine PublishOnChannel(string channelName, Notification notification) 
 	{
 		string url = string.Format(Constants.PRODUCTION_SERVER_URL + Constants.CHANNELS_PUBLISH_URL, SyncanoClient.Instance.InstanceName, channelName);

@@ -16,13 +16,6 @@ namespace Syncano.Data {
 	public const string FIELD_ACCESS_TOKEN = "access_token";
 
 	/// <summary>
-	/// Gets or sets the identifier.
-	/// </summary>
-	/// <value>The identifier.</value>
-	[JsonProperty(FIELD_ID)]
-	public int Id { get; set; }
-
-	/// <summary>
 	/// Gets or sets the name of the user.
 	/// </summary>
 	/// <value>The name of the user.</value>

@@ -37,27 +37,6 @@ namespace Syncano.Data {
 		public ChannelType ChannelType { get; set; }
 
 		/// <summary>
-		/// Gets or sets the group.
-		/// </summary>
-		/// <value>The group.</value>
-		[JsonProperty(FIELD_GROUP)]
-		public Group Group { get; set; }
-
-		/// <summary>
-		/// Gets or sets the channel permissions.
-		/// </summary>
-		/// <value>The channel permissions.</value>
-		[JsonProperty(FIELD_GROUP_PERMISSIONS)]
-		public ChannelPermissions GroupPermissions { get; set; }
-
-		/// <summary>
-		/// Gets or sets the other permissions.
-		/// </summary>
-		/// <value>The other permissions.</value>
-		[JsonProperty(FIELD_OTHER_PERMISSIONS)]
-		public ChannelPermissions OtherPermissions { get; set; }
-
-		/// <summary>
 		/// Date of channel creation.
 		/// </summary>
 		[JsonProperty(FIELD_CREATED_AT)]
