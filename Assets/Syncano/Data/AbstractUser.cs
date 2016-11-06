@@ -8,7 +8,6 @@ using Syncano;
 namespace Syncano.Data {
 	public abstract class AbstractUser<P> : SyncanoObject where P : Profile {
 
-	public const string FIELD_ID = "id";
 	public const string FIELD_USER_NAME = "username";
 	public const string FIELD_PASSWORD = "password";
 	public const string FIELD_USER_KEY = "user_key";

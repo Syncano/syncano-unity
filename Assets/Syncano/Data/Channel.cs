@@ -10,9 +10,6 @@ namespace Syncano.Data {
 		public const string FIELD_NAME = "name";
 		public const string FIELD_DESCRIPTION = "description";
 		public const string FIELD_TYPE = "type";
-		public const string FIELD_GROUP = "group";
-		public const string FIELD_GROUP_PERMISSIONS = "group_permissions";
-		public const string FIELD_OTHER_PERMISSIONS = "other_permissions";
 		public const string FIELD_CREATED_AT = "created_at";
 		public const string FIELD_UPDATED_AT = "updated_at";
 		public const string FIELD_CUSTOM_PUBLISH = "custom_publish";

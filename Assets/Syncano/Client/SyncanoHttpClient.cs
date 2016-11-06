@@ -478,31 +478,23 @@ namespace Syncano.Client {
 
 				string ID = string.IsNullOrEmpty(id) == false ? id.ToString() : string.Empty;
 
-				if(classType.ToString().ToLower().Equals("channel"))
+				if(classType.IsGenericTypeDefinition)
 				{
-					sb.Append(string.Format(Constants.CHANNELS_LIST_URL, SyncanoClient.Instance.InstanceName));
-				}
-
-				else
-				{
-					if(classType.IsGenericTypeDefinition)
+					Type t = classType.GetGenericTypeDefinition();
+					if(t == typeof(User<>))
 					{
-						Type t = classType.GetGenericTypeDefinition();
-						if(t == typeof(User<>))
-						{
-							sb.Append(string.Format("/v1.1/instances/{0}/users/", SyncanoClient.Instance.InstanceName));
-						}
-
-						else
-						{
-							sb.Append(string.Format(Constants.OBJECTS_DETAIL_URL, SyncanoClient.Instance.InstanceName, classType.ToString(), ID));
-						}
+						sb.Append(string.Format("/v1.1/instances/{0}/users/", SyncanoClient.Instance.InstanceName));
 					}
 
 					else
 					{
 						sb.Append(string.Format(Constants.OBJECTS_DETAIL_URL, SyncanoClient.Instance.InstanceName, classType.ToString(), ID));
 					}
+				}
+
+				else
+				{
+					sb.Append(string.Format(Constants.OBJECTS_DETAIL_URL, SyncanoClient.Instance.InstanceName, classType.ToString(), ID));
 				}
 
 				url = sb.ToString();

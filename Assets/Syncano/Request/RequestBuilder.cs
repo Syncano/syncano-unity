@@ -81,7 +81,8 @@ namespace Syncano.Request {
 		/// <param name="onFailure">On failure.</param>
 		public Coroutine CreateChannel(Channel channel, Action<Response<Channel>> onSuccess, Action<Response<Channel>> onFailure) {
 			CheckCallbacks<Channel>(onSuccess, onFailure);
-			return SyncanoHttpClient.Instance.PostAsync<Channel>(channel, onSuccess, onFailure, UnityEngine.Networking.UnityWebRequest.kHttpVerbPOST);
+			string url = Constants.PRODUCTION_SERVER_URL + string.Format(Constants.CHANNELS_LIST_URL, SyncanoClient.Instance.InstanceName);
+			return SyncanoHttpClient.Instance.PostAsync<Channel>(channel, onSuccess, onFailure, UnityEngine.Networking.UnityWebRequest.kHttpVerbPOST, url:url);
 		}
 
 		public Coroutine CreateChannel(Channel channel,  Action<Response<Channel>> onResponseReturned) {
