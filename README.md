@@ -26,6 +26,10 @@ Syncano Unity Library supports all platforms available in Unity. Note some platf
 ---
 You can find more on using Syncano in our [documentation](http://docs.syncano.io/docs/android/?utm_source=github&utm_medium=readme&utm_campaign=syncano-unity).
 
+## Tests
+---
+Syncano Library tests can be found on a separate [branch](https://github.com/Syncano-Community/syncano-unity-tests). This is due to using Unity Test Tools which should be excluded from the build.
+
 ## Contributing
 ---
 We love contributions! Those who want to help us improve our Syncano library -- contribute to code, documentation, adding tests or making any other improvements -- please [create a Pull Request](https://github.com/Syncano/syncano-unity/pulls) with proposed changes.
